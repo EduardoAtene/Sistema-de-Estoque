@@ -12,4 +12,4 @@ Todo veículo deve possuir um ID, que contém a identificação do veículo, a q
 
 O sistema de estoque deve conter uma estrutura de armazenamento de veículos, com chave (ID) e valor. Também, pode-se fazer uma busca para verificar se possui veículo em estoque, pode encomendar mais veículos, adicionando na estrutura de armazenamento e pode-se alterar o valor do veículo. Também, o sistema pode gerar um relatório contendo a quantidade total de veículos no estoque (independentemente da quantidade por modelos), quantidade total modelos de veículos e a quantidade total de carros, motos e ônibus.  <br>
 
-![](img//tabela.jpeg)
+![](img//tabela.jpg)
