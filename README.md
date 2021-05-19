@@ -31,5 +31,5 @@ veículo. Também, o sistema pode gerar um relatório contendo a quantidade tota
 estoque (independentemente da quantidade por modelos), quantidade total modelos de veículos e a
 quantidade total de carros, motos e ônibus.
 
-![](img//tabela.jpg)
+![](img//tabela.jpg) <br>
 Tabela 1: Representa as classes com seus respectivos métodos e atributos
