@@ -5,7 +5,13 @@ public class Moto extends Veiculo implements Garagem {
 	private int tipo;
 	private double bateria;
 	
-	// incluir tipo de moto no construtor
+	public Moto(String iD, int quantidade, String modelo, int ano, float preco,int tipo) {
+		super(iD, quantidade, modelo, ano, preco);
+		this.tipo = tipo;
+		if (this.tipo == 2)
+			bateria = 0;
+		// TODO Auto-generated constructor stub
+	}
 	
 	public static int getMotoVendidos() {
 		return motoVendidos;

@@ -1,5 +1,3 @@
-package Estoque;
-
 public abstract class Veiculo {
 	
 	private String ID;

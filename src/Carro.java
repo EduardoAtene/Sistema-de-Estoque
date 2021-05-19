@@ -6,7 +6,14 @@ public class Carro extends Veiculo implements Garagem {
 	private double bateria;
 	private int acento;
 	
-	// incluir tipo e acento do carro no construtor
+	public Carro(String iD, int quantidade, String modelo, int ano, float preco,int tipo,int acento) {
+		super(iD, quantidade, modelo, ano, preco);
+		this.acento = acento;
+		this.tipo = tipo;
+		if (this.tipo == 2)
+			bateria = 0;
+		// TODO Auto-generated constructor stub
+	}
 	
 	public static int getCarroVendidos() {
 		return carroVendidos;
