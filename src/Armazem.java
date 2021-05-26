@@ -12,7 +12,12 @@ public abstract class Armazem {
 	
 	Map<String,Veiculo> veiculos = new HashMap<>();
 	
-	
+	public Armazem(String nome, String tipo,float tamanho) {
+		super();
+		this.tamanho = tamanho;
+		this.nome = nome;
+		this.tipo = tipo;
+	}
 	
 	
 	
