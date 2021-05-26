@@ -1,27 +1,21 @@
 public abstract class Veiculo {
 	
-	private String ID;
+	private String placa;
 	private String modelo;
 	private int ano;
 	private float preco;
-	protected int vaga;	
+	protected int tipo;
+	protected float vaga;	
 	
-	public Veiculo(String ID, String modelo, int ano, float preco) {
-		this.ID = ID;
+	public Veiculo(String modelo, int ano, String placa,float preco) {
+		this.placa = placa;
 		this.modelo = modelo;
 		this.ano = ano;
 		this.preco = preco;
 	}
 		
-	public int getVaga() {
-		return vaga;
-	}
-
-	public abstract void setVaga();
-
-
-	public String getID() {
-		return ID;
+	public String getPlaca() {
+		return placa;
 	}
 	
 	public String getModelo() {
@@ -34,4 +28,13 @@ public abstract class Veiculo {
 	public float getPreco() {
 		return preco;
 	}
+
+	public int getTipo() {
+		return tipo;
+	}
+
+	public float getVaga() {
+		return vaga;
+	}
+	
 }
