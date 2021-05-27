@@ -10,7 +10,7 @@ public class Tercerizado extends Armazem implements CalcularMensalidade {
 	
 	
 	public Tercerizado(String nome, int tipo) {
-		super(nome, tipo,1000);
+		super(nome, tipo,1000); 
 
 	}
 
@@ -64,9 +64,9 @@ public class Tercerizado extends Armazem implements CalcularMensalidade {
 	
 	public void relatorioArmazem() {
 		calcularMensalidade();
-		String tipo = "Tercerizado";		
-		System.out.println("Nome: " + this.getNome());
-		System.out.println("Tipo: " + tipo);
+		String tipo = "Tercerizado";
+		System.out.println("\nNome: " + this.getNome());
+		System.out.println("Tipo do armazem: " + tipo);
 
 		System.out.println("Tamanho ocupado: " + this.getTamanho_ocupado());
 

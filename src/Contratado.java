@@ -21,8 +21,8 @@ public class Contratado extends Armazem implements CalcularMensalidade{
 	
 	public void relatorioArmazem() {
 		String tipo = "Contratado";		
-		System.out.println("Nome: " + this.getNome());
-		System.out.println("Tipo: " + tipo);
+		System.out.println("\nNome: " + this.getNome());
+		System.out.println("Tipo do armazem: " + tipo);
 		System.out.println("Tamanho total do armazem: " + this.getTamanho());
 		System.out.println("Tamanho disponível: " + this.getTamanho_disponivel());
 

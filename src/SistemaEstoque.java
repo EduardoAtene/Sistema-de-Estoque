@@ -8,11 +8,35 @@ public class SistemaEstoque {
 	private int quantidade_total_contratado = 0;
 	private int quantidade_tipos_armazens= 0;
 	private int tipos_armazens[] = {0,0,0};
-	//private int quantidade_total_veiculos = 0;
+	private int quantidade_total_veiculos;
+	private int quantidade_total_veiculos_do_armazem[] = {0,0,0}; 
+
 	
 	Map <String,Armazem> armazens = new HashMap<>();
 
+	public void verificarQuantidadeTotalVeiculo() {
+		quantidade_total_veiculos = 0;
+		for (Map.Entry<String, Armazem> armazem : armazens.entrySet()) {
+			quantidade_total_veiculos +=armazem.getValue().getQuantidade_veiculos();
+		}
+	}	
 	
+	public void verificarQuantidadeTotalVeiculoArmazem() {
+		quantidade_total_veiculos_do_armazem[0] = 0;
+		quantidade_total_veiculos_do_armazem[1] = 0;
+		quantidade_total_veiculos_do_armazem[2] = 0;
+		for (Map.Entry<String, Armazem> armazem : armazens.entrySet()) {
+			if(armazem.getValue().getTipo() == 1) {
+				quantidade_total_veiculos_do_armazem[0] += armazem.getValue().getQuantidade_veiculos();
+			}
+			else if(armazem.getValue().getTipo() == 2) {
+				quantidade_total_veiculos_do_armazem[1] += armazem.getValue().getQuantidade_veiculos();
+			}
+			else if(armazem.getValue().getTipo() == 3) {
+				quantidade_total_veiculos_do_armazem[2] += armazem.getValue().getQuantidade_veiculos();
+			}
+		}
+	}	
 	// CRIAR / REMOVER ARMAZEM
 	public void criarArmazemProprio(String nome,double tamanho) {
 		Propio proprio = new Propio(nome,1,(float)tamanho);
@@ -81,8 +105,9 @@ public class SistemaEstoque {
 	}
 	
 	public void relatorioTotal() {
+		verificarQuantidadeTotalVeiculo();
 		System.out.println("Quantidade total de armazens: " + this.quantidade_total_armazem);
-		//System.out.println("Quantidade total de veiculos: " + );
+		System.out.println("Quantidade total de veiculos: " + quantidade_total_veiculos);
 		System.out.println("Quantidade de tipos de armazens: " + this.quantidade_tipos_armazens);
 		for(int i = 0; i < 3;i++) {
 			if(tipos_armazens[i] == 1) {
@@ -98,7 +123,8 @@ public class SistemaEstoque {
 					System.out.println(" ### ARMAZEM TERCEIRIZADO ###");
 					System.out.println("Quantidade total de armazens tercerizado: " + this.quantidade_total_terceirizado);
 				}
-				//System.out.println("Quantidade total de veiculos do armazem: " + );
+				verificarQuantidadeTotalVeiculoArmazem();
+				System.out.println("Quantidade total de veiculos do armazem: " + quantidade_total_veiculos_do_armazem[i]);
 
 		
 			}
