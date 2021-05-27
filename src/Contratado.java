@@ -5,6 +5,7 @@ public class Contratado extends Armazem implements CalcularMensalidade{
 	public Contratado(String nome, String tipo,float tamanho) {
 		super(nome,tipo,tamanho);
 		calcularMensalidade();
+		this.tipo = 2;
 
 	}
 
