@@ -3,15 +3,15 @@ public class Tercerizado extends Armazem implements CalcularMensalidade {
 	private float valor_por_unidade_moto = (float)100.00;
 	private float valor_por_unidade_carro = (float)200.00;
 	private float valor_por_unidade_onibus = (float)600.00;
-	private float valor_total_moto;
-	private float valor_total_carro;
-	private float valor_total_onibus;
-	private float valor_total;
+	private float valor_total_moto = 0;
+	private float valor_total_carro = 0;
+	private float valor_total_onibus = 0;
+	private float valor_total = 0;
 	
 	
-	public Tercerizado(String nome, String tipo) {
-		super(nome, tipo,0);
-		this.tipo = 3;
+	public Tercerizado(String nome, int tipo) {
+		super(nome, tipo,1000);
+
 	}
 
 
@@ -55,25 +55,30 @@ public class Tercerizado extends Armazem implements CalcularMensalidade {
 	
 	@Override
 	public void calcularMensalidade() {
-		valor_total_moto = this.getQuantidade_moto() * valor_por_unidade_moto ;
-		valor_total_carro = this.getQuantidade_carro() * valor_por_unidade_carro;
-		valor_total_onibus = this.getQuantidade_onibus() * valor_por_unidade_onibus;
+		valor_total_moto = this.getQuantidade_moto_T() * valor_por_unidade_moto ;
+		valor_total_carro = this.getQuantidade_carro_T() * valor_por_unidade_carro;
+		valor_total_onibus = this.getQuantidade_onibus_T() * valor_por_unidade_onibus;
 		this.valor_total = valor_total_moto + valor_total_carro + valor_total_onibus;
 	}
 	
-	// MÉTODOS SOBREESCRITOS
 	
-	public void adicionarMoto(String modelo, int ano, String placa,float preco) {
-		super.adicionarMoto(modelo, ano, placa, preco);
+	public void relatorioArmazem() {
 		calcularMensalidade();
-	}
-	public void adicionarCarro(String modelo, int ano, String placa,float preco) {
-		super.adicionarCarro(modelo, ano, placa, preco);
-		calcularMensalidade();
-	}
-	public void adicionarOnibus(String modelo, int ano, String placa,float preco) {
-		super.adicionarOnibus(modelo, ano, placa, preco);
-		calcularMensalidade();
-	}
+		String tipo = "Tercerizado";		
+		System.out.println("Nome: " + this.getNome());
+		System.out.println("Tipo: " + tipo);
 
+		System.out.println("Tamanho ocupado: " + this.getTamanho_ocupado());
+
+		System.out.println("Quantidade total de veiculos: " + this.getQuantidade_veiculos());
+		System.out.println("Quantidade de moto:" + this.getQuantidade_moto());
+		System.out.println("Quantidade de carro: " + this.getQuantidade_carro());
+		System.out.println("Quantidade de onibus: " + this.getQuantidade_onibus());
+		System.out.println("Custo total: " + this.valor_total);
+		System.out.println("Custo do moto: " + this.valor_total_moto);
+		System.out.println("Custo do carro: " + this.valor_total_carro);
+		System.out.println("Custo do onibus: " + this.valor_total_onibus);
+	}
+	
 }
+

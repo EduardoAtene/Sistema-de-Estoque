@@ -3,11 +3,11 @@ public abstract class Veiculo {
 	private String placa;
 	private String modelo;
 	private int ano;
-	private float preco;
+	private double preco;
 	protected int tipo;
 	protected float vaga;	
 	
-	public Veiculo(String modelo, int ano, String placa,float preco) {
+	public Veiculo(String modelo, int ano, String placa,double preco) {
 		this.placa = placa;
 		this.modelo = modelo;
 		this.ano = ano;
@@ -25,7 +25,7 @@ public abstract class Veiculo {
 		return ano;
 	}
 
-	public float getPreco() {
+	public double getPreco() {
 		return preco;
 	}
 
