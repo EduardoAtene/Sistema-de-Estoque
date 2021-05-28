@@ -81,7 +81,7 @@ public class SistemaEstoque {
 		quantidade_total_armazem--;
 	}
 	
-	// ADICIONAR / REMEVER VEICULO
+	// ADICIONAR / REMOVER / RECUPEAR VEICULO
 	
 	public void adicionarMoto(String armazem, String modelo, int ano, String placa,double preco ) {
 		armazens.get(armazem).adicionarMoto(modelo, ano, placa, preco);
@@ -97,8 +97,34 @@ public class SistemaEstoque {
 		armazens.get(armazem).removerVeiculo(placa);
 	}
 	
-	//
+	public void recuperarVeiculo(String armazem, String placa) {
+		armazens.get(armazem).recuperarVeiculo(placa);
+	}
 	
+	// RELATORIO VEICULO
+	
+	public void dadosVeiculo(String armazem, String placa) {
+		armazens.get(armazem).dadosVeiculos(armazem, placa,1);
+	}
+	public void dadosVeiculoRemovido(String armazem, String placa) {
+		armazens.get(armazem).dadosVeiculos(armazem, placa,2);
+	}
+	
+	// VEICULOS REMOVIDOS
+	
+	public void limparRemovidosTotal(String armazem) {
+		armazens.get(armazem).limparRemovidoTotal();
+	}
+	public void limparRemovidosUnidade(String armazem, String placa) {
+		armazens.get(armazem).limparRemovidoUnidade(placa);
+	}
+	
+	
+	//RELATORIOS
+	public void relatorioVeiculosArmazem(String armazem) {
+		armazens.get(armazem).relatorioVeiculosArmazem(armazem);
+	}
+
 	public void relatorioArmazem(String armazem) {
 		//TRATAR EXCEÇÃO  - NO CASO, SE O ARMAZEM É INEXISTENTE, NÃO EXISTE, MONSTRAR NA TELA QUE O ERRO NÃO EXISTE.
 		armazens.get(armazem).relatorioArmazem();
