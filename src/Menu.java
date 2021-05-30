@@ -28,23 +28,38 @@ public class Menu {
 		System.out.println("--------------------------------------------------");
 		System.out.println("Selecione alguma das opções para continuar . . .");
 		
-		int entrada = sc.nextInt(); 
+		try {
+			int entrada = sc.nextInt(); 
+			
+			if(entrada == -1) {
+				System.out.println("\n############### SISTEMA FINALIZADO ###############");
+			}
+	
+			else if(entrada == 1) {
+				menu_armazem();
+			}
+			else if(entrada == 2) {
+				menu_veiculo();
+			}
+			else if(entrada == 3) {
+				menu_relatorio();
+			}
+			else if (entrada >= 4) {
+				System.out.println("\nVocê inseriu uma entrada não existente, por favor selecione as opções validas\n");
+				menu_principal();
+			}
+			else if (entrada <-1 ) {
+				System.out.println("\nVocê inseriu uma entrada não existente, por favor selecione as opções validas\n");
+				menu_principal();
+			}
 		
-		if(entrada == -1) {
-			System.out.println("\n############### SISTEMA FINALIZADO ###############");
+		} catch (InputMismatchException e) {
+			System.out.println("\nEntrada invalida, selecine as opções validas\n");
+			sc.nextLine();
+			menu_principal();
 		}
 		
-		else if(entrada == 1) {
-			menu_armazem();
-		}
-		else if(entrada == 2) {
-			menu_veiculo();
-		}
-		else if(entrada == 3) {
-			menu_relatorio();
-		}
 		
-
 	}
 
 	
@@ -73,6 +88,7 @@ public class Menu {
 			menu_armazem_descricao(0);
 		}
 		else if(entrada == 0) {
+			System.out.println("\nOperação cancelada!\n");
 			menu_principal();
 		}
 	}
@@ -502,8 +518,10 @@ public class Menu {
 		
 		int entrada = sc.nextInt();
 		
-		if(entrada == 0)menu_principal();
-		
+		if(entrada == 0) {
+			System.out.println("\nOperação cancelada!\n");
+			menu_principal();
+		}
 		else if(entrada == 1)menu_relatorio_dados();
 
 		else if(entrada == 2)menu_relatorio_veiculoArmazem();
