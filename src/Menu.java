@@ -110,8 +110,29 @@ public class Menu {
 	static void menu_armazem_criar_proprio() {
 		System.out.println("Qual é o nome do seu armazem?");
 		String nome = sc.next();
-		System.out.println("Qual é o tamanho do seu armazem?");
-		double tamanho = sc.nextDouble();
+		if(menu.armazens.get(nome)!=null) {
+			System.out.println("Armazém já existente.");
+			menu_principal();
+		};
+		
+		double tamanho=0;
+		int verific = 0;
+		
+		do {
+			try {
+				System.out.println("Qual é o tamanho do seu armazem?");
+				tamanho = sc.nextDouble();
+				if(tamanho == 0)menu_principal();
+				else if(tamanho>0);
+				else verific=1;
+			}catch (InputMismatchException e) {
+				System.out.println("Entrada inválida. Por favor, insira uma entrada do tipo flutuante.\n"
+						+ "Observação: Não utilize '.' para indicar um valor flutuante, utilize virgula ','\n"
+						+ "Se deseja cancelar essa operação, insira o valor 0");
+			}
+		}while(verific==0);
+
+		
 		menu.criarArmazemProprio(nome, tamanho);
 		menu_principal();
 	}
@@ -398,8 +419,10 @@ public class Menu {
 	static void menu_veiculo_remover() {
 		System.out.println("Qual armazem se encontra o veiculo?");
 		String nome_armazem = sc.next();		
+		verificarExistenciaArmazem(menu.armazens.get(nome_armazem));
 		System.out.println("Qual a placa do veiculo que deseja remover?");
 		String placa_veiculo = sc.next();
+		verificarExistenciaPlaca(menu.armazens.get(nome_armazem).veiculos.get(placa_veiculo));
 	
 		System.out.println("Tem certeza que deseja remover o veiculo?");
 		System.out.println("Pressione 1 para confirmar. . .");
@@ -420,8 +443,10 @@ public class Menu {
 	static void menu_veiculo_recuperar() {
 		System.out.println("Qual armazem se encontra o veiculo removido?");
 		String armazem = sc.next();		
+		verificarExistenciaArmazem(menu.armazens.get(armazem));
 		System.out.println("Qual é a placa do veiculo que deseja ser recuperado?");
 		String placa = sc.next();
+		verificarExistenciaPlaca(menu.armazens.get(armazem).veiculos_removidos.get(placa));
 	
 		menu.recuperarVeiculo(armazem, placa);
 		System.out.println("Veiculo recuperado!");
@@ -533,8 +558,10 @@ public class Menu {
 	static void menu_relatorio_dados_veiculo() {
 		System.out.println("Qual é o armazem que está contido o veículo? ");
 		String armazem = sc.next();
+		verificarExistenciaArmazem(menu.armazens.get(armazem));
 		System.out.println("Qual é a placa do veículo? ");
 		String placa = sc.next();
+		verificarExistenciaPlaca(menu.armazens.get(armazem).veiculos.get(placa));
 		menu.dadosVeiculo(armazem, placa);
 		menu_principal();
 	}
@@ -542,8 +569,10 @@ public class Menu {
 	static void menu_relatorio_dados_veiculoRemovido() {
 		System.out.println("Qual é o armazem que estava contido o veículo? ");
 		String armazem = sc.next();
+		verificarExistenciaArmazem(menu.armazens.get(armazem));
 		System.out.println("Qual é era placa do veículo? ");
 		String placa = sc.next();
+		verificarExistenciaPlaca(menu.armazens.get(armazem).veiculos.get(placa));
 		menu.dadosVeiculoRemovido(armazem, placa);
 		menu_principal();
 	}
@@ -553,7 +582,9 @@ public class Menu {
 	static void menu_relatorio_veiculoArmazem() {
 		System.out.println("Qual é o armazem que deseja emitir o relatório de veiculos? ");
 		String armazem = sc.next();
+		verificarExistenciaArmazem(menu.armazens.get(armazem));
 		menu.relatorioVeiculosArmazem(armazem);
+		
 		menu_principal();
 	}
 	
@@ -561,6 +592,7 @@ public class Menu {
 	static void menu_relatorio_armazem() {
 		System.out.println("Qual é o armazem que deseja emitir o relatório? ");
 		String armazem = sc.next();
+		verificarExistenciaArmazem(menu.armazens.get(armazem));
 		menu.relatorioArmazem(armazem);
 		menu_principal();
 	}
@@ -578,6 +610,12 @@ public class Menu {
 	static private void verificarExistenciaArmazem(Armazem armazem) {
 		if (armazem == null) {
 			System.out.println("O armazém inexistente!!");
+			menu_principal();
+		}
+	}
+	static private void verificarExistenciaPlaca(Veiculo veiculo) {
+		if (veiculo == null) {
+			System.out.println("O veiculo inexistente!!");
 			menu_principal();
 		}
 	}
