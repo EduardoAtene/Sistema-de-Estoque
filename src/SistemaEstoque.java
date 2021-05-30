@@ -12,7 +12,7 @@ public class SistemaEstoque {
 	private int quantidade_total_veiculos_do_armazem[] = {0,0,0}; 
 
 	
-	Map <String,Armazem> armazens = new HashMap<>();
+	protected Map <String,Armazem> armazens = new HashMap<>();
 
 	public void verificarQuantidadeTotalVeiculo() {
 		quantidade_total_veiculos = 0;
@@ -40,7 +40,7 @@ public class SistemaEstoque {
 	// CRIAR / REMOVER ARMAZEM
 	public void criarArmazemProprio(String nome,double tamanho) {
 		Propio proprio = new Propio(nome,1,(float)tamanho);
-		armazens.put(nome, proprio);
+		armazens.put(nome, proprio); 
 		quantidade_total_proprio++;
 		quantidade_total_armazem++;
 		if(tipos_armazens[0] == 0) {
@@ -54,7 +54,7 @@ public class SistemaEstoque {
 		armazens.put(nome, contratado);
 		quantidade_total_contratado++;
 		quantidade_total_armazem++;
-		if(tipos_armazens[0] == 0) {
+		if(tipos_armazens[1] == 0) {
 			tipos_armazens[1] = 1;
 			quantidade_tipos_armazens ++;
 		}
@@ -65,7 +65,7 @@ public class SistemaEstoque {
 		armazens.put(nome, terceirizado);
 		quantidade_total_terceirizado++;
 		quantidade_total_armazem++;
-		if(tipos_armazens[1] == 0) {
+		if(tipos_armazens[2] == 0) {
 			tipos_armazens[2] = 1;
 			quantidade_tipos_armazens ++;
 		}

@@ -1,9 +1,20 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
+
 public class Menu {
 	static Scanner sc = new Scanner(System.in);
 	static SistemaEstoque menu = new SistemaEstoque();
 	
 	public static void main(String[] args) {
+		menu.criarArmazemContratado("Argentinx", 21);
+
+		
+
+		menu.adicionarOnibus("Argentinx", "Escolar", 2020, "DEC-1312", 150000.00);
+		menu.adicionarOnibus("Argentinx", "Fundi", 2020, "VSF-1547", 200000.00);
+		menu.adicionarCarro("Argentinx", "Celta", 2030, "ABC-1234", 5000.00);
+		menu.adicionarOnibus("Argentinx", "RAUL", 2020, "DEF-1234", 150000.00);
+
 		menu_principal();
 		}
 	// MENU PRINCIPAL
@@ -35,7 +46,7 @@ public class Menu {
 		
 
 	}
-	
+
 	
 	// OPERAÇÃO COM ARMAZÉM
 	
@@ -102,7 +113,6 @@ public class Menu {
 		System.out.println("Qual é o tamanho do seu armazem?");
 		double tamanho = sc.nextDouble();
 		menu.criarArmazemProprio(nome, tamanho);
-		System.out.println("Armazem criado com sucesso!!");
 		menu_principal();
 	}
 	// OPÇÃO 2 | ARMAZENS | CRIAR ARMAZENS | ARMAZEM CONTRATADO
@@ -112,7 +122,6 @@ public class Menu {
 		System.out.println("Qual é o tamanho que deseja alugar um armazem contratado?");
 		double tamanho = sc.nextDouble();
 		menu.criarArmazemContratado(nome, tamanho);
-		System.out.println("Armazem criado com sucesso!!");
 		menu_principal();
 	}
 	// OPÇÃO 3 | ARMAZENS | CRIAR ARMAZENS | ARMAZEM TERCEIRIZADO
@@ -120,7 +129,6 @@ public class Menu {
 		System.out.println("Qual é o nome do seu armazem?");
 		String nome = sc.next();
 		menu.criarArmazemTerceirizado(nome);
-		System.out.println("Armazem criado com sucesso!!");
 		menu_principal();
 	}
 	
@@ -222,51 +230,140 @@ public class Menu {
 	static void menu_veiculo_adicionar_moto() {
 		System.out.println("Qual é o armazem que deseja adicionar a moto? ");
 		String armazem = sc.next();
+		verificarExistenciaArmazem(menu.armazens.get(armazem));
+		
 		System.out.println("Qual é o modelo da moto? ");
 		String modelo = sc.next();
-		System.out.println("Qual é o ano? ");
-		int ano = sc.nextInt();
+		
+		int ano=0;
+		int verific = 0;
+		
+		do {
+			try {
+				System.out.println("Qual é o ano? ");
+				ano = sc.nextInt();
+				if(ano ==-1)menu_principal();
+				else verific=1;
+			}catch (InputMismatchException e) {
+				System.out.println("Entrada inválida. Por favor, insira uma entrada do tipo inteiro.\n"
+						+ "Se deseja cancelar essa operação, insira o valor -1");
+			}
+			sc.nextLine();
+		}while(verific==0);
+
 		System.out.println("Qual é a placa da moto? ");
 		String placa = sc.next();
-		System.out.println("Qual é o preço da moto? ");
-		float preco = sc.nextFloat();
+		
+		float preco = 0;
+		verific = 0;
+		do {
+			try {
+				System.out.println("Qual é o preço da moto? ");
+				preco = sc.nextFloat();
+				if(ano ==-1)menu_principal();
+				else verific=1;
+			}catch (InputMismatchException e) {
+				System.out.println("Entrada inválida. Por favor, insira uma entrada do tipo flutuante.\n"
+						+ "Observação: Não utilize '.' para indicar um valor flutuante, utilize virgula ','\n"
+						+ "Se deseja cancelar essa operação, insira o valor -1");
+			}
+			sc.nextLine();
+		}while(verific==0);
+
 		menu.adicionarMoto(armazem, modelo, ano, placa, preco);
-		 
-		System.out.println("Moto adicionada com sucesso!");
-		menu_principal();
+		menu_principal(); 
 	}
 	// OPÇÃO 2 | VEICULOS | ADICIONAR | CARRO
 	static void menu_veiculo_adicionar_carro() {
 		System.out.println("Qual é o armazem que deseja adicionar o carro? ");
 		String armazem = sc.next();
+		verificarExistenciaArmazem(menu.armazens.get(armazem));
 		System.out.println("Qual é o modelo do carro? ");
 		String modelo = sc.next();
-		System.out.println("Qual é o ano? ");
-		int ano = sc.nextInt();
+		
+		
+		int ano=0;
+		int verific = 0;
+		
+		do {
+			try {
+				System.out.println("Qual é o ano? ");
+				ano = sc.nextInt();
+				if(ano ==-1)menu_principal();
+				else verific=1;
+			}catch (InputMismatchException e) {
+				System.out.println("Entrada inválida. Por favor, insira uma entrada do tipo inteiro.\n"
+						+ "Se deseja cancelar essa operação, insira o valor -1");
+			}
+			sc.nextLine();
+		}while(verific==0);
+
 		System.out.println("Qual é a placa do carro? ");
 		String placa = sc.next();
-		System.out.println("Qual é o preço do carro? ");
-		double preco = sc.nextDouble();
-		menu.adicionarCarro(armazem, modelo, ano, placa, preco);
 		
-		System.out.println("Carro adicionado com sucesso!");
+		float preco = 0;
+		verific = 0;
+		do {
+			try {
+				System.out.println("Qual é o preço do carro? ");
+				preco = sc.nextFloat();
+				if(ano ==-1)menu_principal();
+				else verific=1;
+			}catch (InputMismatchException e) {
+				System.out.println("Entrada inválida. Por favor, insira uma entrada do tipo flutuante.\n"
+						+ "Observação: Não utilize '.' para indicar um valor flutuante, utilize virgula ','\n"
+						+ "Se deseja cancelar essa operação, insira o valor -1");
+			}
+			sc.nextLine();
+		}while(verific==0);
+		
+		menu.adicionarCarro(armazem, modelo, ano, placa, preco);
 		menu_principal();
 	}
 	// OPÇÃO 3 | VEICULOS | ADICIONAR | ONIBUS	
 	static void menu_veiculo_adicionar_onibus() {
 		System.out.println("Qual é o armazem que deseja adicionar o onibus? ");
 		String armazem = sc.next();
+		verificarExistenciaArmazem(menu.armazens.get(armazem));
 		System.out.println("Qual é o modelo do onibus? ");
 		String modelo = sc.next();
-		System.out.println("Qual é o ano? ");
-		int ano = sc.nextInt();
+		
+		int ano=0;
+		int verific = 0;
+		
+		do {
+			try {
+				System.out.println("Qual é o ano? ");
+				ano = sc.nextInt();
+				if(ano ==-1)menu_principal();
+				else verific=1;
+			}catch (InputMismatchException e) {
+				System.out.println("Entrada inválida. Por favor, insira uma entrada do tipo inteiro.\n"
+						+ "Se deseja cancelar essa operação, insira o valor -1");
+			}
+			sc.nextLine();
+		}while(verific==0);
+
 		System.out.println("Qual é a placa do onibus? ");
 		String placa = sc.next();
-		System.out.println("Qual é o preço do onibus? ");
-		double preco = sc.nextDouble();
-		menu.adicionarOnibus(armazem, modelo, ano, placa, preco);
 		
-		System.out.println("Onibus adicionada com sucesso!");
+		float preco = 0;
+		verific = 0;
+		do {
+			try {
+				System.out.println("Qual é o preço do onibus? ");
+				preco = sc.nextFloat();
+				if(ano ==-1)menu_principal();
+				else verific=1;
+			}catch (InputMismatchException e) {
+				System.out.println("Entrada inválida. Por favor, insira uma entrada do tipo flutuante.\n"
+						+ "Observação: Não utilize '.' para indicar um valor flutuante, utilize virgula ','\n"
+						+ "Se deseja cancelar essa operação, insira o valor -1");
+			}
+			sc.nextLine();
+		}while(verific==0);
+
+		menu.adicionarOnibus(armazem, modelo, ano, placa, preco);
 		menu_principal();
 }
 	// OPÇÃO 4 | VEICULOS | ADICIONAR | DESCRICAO
@@ -473,6 +570,18 @@ public class Menu {
 		menu.relatorioTotal();
 		menu_principal();
 	}
+	
+
+	
+	// TRATANDO EXECÇÕES
+	
+	static private void verificarExistenciaArmazem(Armazem armazem) {
+		if (armazem == null) {
+			System.out.println("O armazém inexistente!!");
+			menu_principal();
+		}
+	}
+	
 	
 
 	

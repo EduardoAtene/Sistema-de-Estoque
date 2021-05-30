@@ -13,11 +13,10 @@ public abstract class Armazem {
 	private int quantidade_moto_T = 0;
 	private int quantidade_carro_T = 0;
 	private int quantidade_onibus_T = 0;	
-	Map<String,Veiculo> veiculos = new HashMap<>();
-	Map<String,Veiculo> veiculos_removidos = new HashMap<>();
+	private Map<String,Veiculo> veiculos = new HashMap<>();
+	private Map<String,Veiculo> veiculos_removidos = new HashMap<>();
 	private double tamanho_ocupado= 0;
 	private double tamanho_disponivel= this.tamanho;
-	
 	public Armazem(String nome, int tipo,double tamanho) {
 		super();
 		this.tamanho = tamanho;
@@ -58,7 +57,7 @@ public abstract class Armazem {
 	}
 	protected int getQuantidade_moto_T() {
 		return quantidade_moto_T;
-	}
+	} 
 	protected int getQuantidade_carro_T() {
 		return quantidade_carro_T;
 	}
@@ -69,41 +68,45 @@ public abstract class Armazem {
 
 	// Funções / Métodos
 	public void adicionarMoto(String modelo, int ano, String placa,double preco) {
+		this.tamanho_disponivel =(this.tamanho - this.tamanho_ocupado);
 		Moto moto = new Moto(modelo,ano,placa,preco);
 		quantidade_moto++;
 		quantidade_moto_T++;
 		if(verificarTamanho(moto.vaga)) {
 			veiculos.put(placa,moto);
-			quantidade_veiculos++;
+			quantidade_veiculos++;	
+			System.out.println("Moto adicionado com sucesso!");
 		}else {
 			quantidade_moto--;
-			verificarTamanho(moto.vaga);
 			System.out.println("Não possui vaga disponível para adicionar este veiculo!!");
 		}
 	}
 	public void adicionarCarro(String modelo, int ano, String placa,double preco) {
+		this.tamanho_disponivel =(this.tamanho - this.tamanho_ocupado);
 		Carro carro = new Carro(modelo,ano,placa,preco);
 		quantidade_carro++;
 		quantidade_carro_T++;
 		if(verificarTamanho(carro.vaga)) {
 			veiculos.put(placa,carro);
 			quantidade_veiculos++;
+			System.out.println("Carro adicionado com sucesso!");
 		}else {
 			quantidade_carro--;
-			verificarTamanho(carro.vaga);
 			System.out.println("Não possui vaga disponível para adicionar este veiculo!!");
 		}
 	}
 	public void adicionarOnibus(String modelo, int ano, String placa,double preco) {
+		this.tamanho_disponivel =(this.tamanho - this.tamanho_ocupado);
 		Onibus onibus = new Onibus(modelo,ano,placa,preco);
 		quantidade_onibus++;
 		quantidade_onibus_T++;
 		if(verificarTamanho(onibus.vaga)) {
 			veiculos.put(placa,onibus);
 			quantidade_veiculos++;
+			
+			System.out.println("Onibus adicionado com sucesso!");
 		}else {
 			quantidade_onibus--;
-			verificarTamanho(onibus.vaga);
 			System.out.println("Não possui vaga disponível para adicionar este veiculo!!");
 		}
 	}
@@ -114,16 +117,30 @@ public abstract class Armazem {
 		if(tipo_veiculo == 1)quantidade_moto--;
 		else if(tipo_veiculo == 2)quantidade_carro--;
 		else if(tipo_veiculo == 3)quantidade_onibus--;
-		verificarTamanho(veiculos.get(placa).vaga);
 		veiculos_removidos.put(placa, veiculos.get(placa));
 		veiculos.remove(placa);
 		quantidade_veiculos--;
 		quantidade_veiculos_removidos++;
+		
+		this.tamanho_ocupado =(double)((quantidade_moto*0.5) + (quantidade_carro * 2) + (quantidade_onibus*6));
+		this.tamanho_disponivel =(this.tamanho - this.tamanho_ocupado);
 	}
 	
 	public void recuperarVeiculo(String placa) {
-		veiculos.put(placa,veiculos_removidos.get(placa));
-		veiculos_removidos.remove(placa);
+		if(verificarTamanho(veiculos_removidos.get(placa).getVaga(),0)) {
+			this.veiculos.put(veiculos_removidos.get(placa).getPlaca(),veiculos_removidos.get(placa));
+			this.veiculos_removidos.remove(placa);
+			quantidade_veiculos++;
+			quantidade_veiculos_removidos--;
+			if((veiculos.get(placa).getTipo() == 1))quantidade_moto++;
+			else if(veiculos.get(placa).getTipo() == 2)quantidade_carro++;
+			else if(veiculos.get(placa).getTipo() == 3)quantidade_onibus++;
+			
+			this.tamanho_ocupado =(double)((quantidade_moto*0.5) + (quantidade_carro * 2) + (quantidade_onibus*6));
+			this.tamanho_disponivel =(this.tamanho - this.tamanho_ocupado);
+		}else {
+			System.out.println("Não possui vaga disponível para recuperar este veiculo!!");
+		}
 	}
 	
 	public void limparRemovidoTotal() {
@@ -134,10 +151,20 @@ public abstract class Armazem {
 	}
 	
 	private boolean verificarTamanho(float vaga) {
-		this.tamanho_ocupado =(double)((quantidade_moto*0.5) + (quantidade_carro * 2) + (quantidade_onibus*6));
-		this.tamanho_disponivel =(this.tamanho - this.tamanho_ocupado);
-		float aux_verific = (vaga+(float)tamanho_ocupado);
-		if(aux_verific <= this.tamanho)return true;
+		if(vaga <= tamanho_disponivel) {
+			this.tamanho_ocupado =(double)((quantidade_moto*0.5) + (quantidade_carro * 2) + (quantidade_onibus*6));
+			this.tamanho_disponivel =(this.tamanho - this.tamanho_ocupado);
+			return true;
+		}
+		return false;
+		
+	}
+	private boolean verificarTamanho(float vaga,int aux) {
+		if(vaga <= tamanho_disponivel) {
+			this.tamanho_ocupado =(double)((quantidade_moto*0.5) + (quantidade_carro * 2) + (quantidade_onibus*6));
+			this.tamanho_disponivel =(this.tamanho - this.tamanho_ocupado);
+			return true;
+		}
 		return false;
 		
 	}
