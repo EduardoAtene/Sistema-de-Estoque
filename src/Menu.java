@@ -21,7 +21,7 @@ public class Menu {
 		int entrada = sc.nextInt(); 
 		
 		if(entrada == -1) {
-			System.out.println("Sistema Finalizado.");
+			System.out.println("Sistema Finalizado. ");
 		}
 		
 		else if(entrada == 1) {
