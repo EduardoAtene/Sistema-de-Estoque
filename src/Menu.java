@@ -20,7 +20,9 @@ public class Menu {
 		
 		int entrada = sc.nextInt(); 
 		
-		if(entrada == -1);
+		if(entrada == -1) {
+			System.out.println("Sistema Finalizado.");
+		}
 		
 		else if(entrada == 1) {
 			menu_armazem();
