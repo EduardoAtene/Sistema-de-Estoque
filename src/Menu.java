@@ -4,29 +4,7 @@ public class Menu {
 	static SistemaEstoque menu = new SistemaEstoque();
 	
 	public static void main(String[] args) {
-		menu.criarArmazemTerceirizado("Eduardo");
-		menu.criarArmazemContratado("Gabriel",20);
-
-		menu.adicionarMoto("Eduardo", "Bis", 2000, "ABC-1234", 500.00);
-		menu.adicionarCarro("Eduardo", "Celta", 2019, "FOA-9924", 50.00);
-		menu.adicionarOnibus("Eduardo", "Onibus", 2022, "EOF-3259", 100.000);
-		menu.adicionarCarro("Eduardo","CeltINHAA", 2020, "ABC-3125", 0);
-		
-		menu.adicionarMoto("Eduardo", "Bis", 2000, "ABC-2523", 500.00);
-		menu.adicionarCarro("Eduardo", "Celta", 2019, "FOA-5412", 50.00);
-		menu.adicionarOnibus("Eduardo", "Onibus", 2022, "EOF-3215", 100.000);
-		menu.adicionarCarro("Eduardo","CeltINHAA", 2020, "ABC-4215", 0);		
-		
-		menu.removerVeiculo("Eduardo","FOA-5412");
-		menu.removerVeiculo("Eduardo", "EOF-3215");
-		menu.removerVeiculo("Eduardo", "ABC-4215");		
-		
-		menu.removerVeiculo("Eduardo", "ABC-1234");			
-		
-		menu.recuperarVeiculo("Eduardo", "ABC-1234");
-
 		menu_principal();
-		
 		}
 	// MENU PRINCIPAL
 	static void menu_principal() {
