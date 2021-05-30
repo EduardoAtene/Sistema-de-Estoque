@@ -4,6 +4,27 @@ public class Menu {
 	static SistemaEstoque menu = new SistemaEstoque();
 	
 	public static void main(String[] args) {
+		menu.criarArmazemTerceirizado("Eduardo");
+		menu.criarArmazemContratado("Gabriel",20);
+
+		menu.adicionarMoto("Eduardo", "Bis", 2000, "ABC-1234", 500.00);
+		menu.adicionarCarro("Eduardo", "Celta", 2019, "FOA-9924", 50.00);
+		menu.adicionarOnibus("Eduardo", "Onibus", 2022, "EOF-3259", 100.000);
+		menu.adicionarCarro("Eduardo","CeltINHAA", 2020, "ABC-3125", 0);
+		
+		menu.adicionarMoto("Eduardo", "Bis", 2000, "ABC-2523", 500.00);
+		menu.adicionarCarro("Eduardo", "Celta", 2019, "FOA-5412", 50.00);
+		menu.adicionarOnibus("Eduardo", "Onibus", 2022, "EOF-3215", 100.000);
+		menu.adicionarCarro("Eduardo","CeltINHAA", 2020, "ABC-4215", 0);		
+		
+		menu.removerVeiculo("Eduardo","FOA-5412");
+		menu.removerVeiculo("Eduardo", "EOF-3215");
+		menu.removerVeiculo("Eduardo", "ABC-4215");		
+		
+		menu.removerVeiculo("Eduardo", "ABC-1234");			
+		
+		menu.recuperarVeiculo("Eduardo", "ABC-1234");
+
 		menu_principal();
 		
 		}
@@ -11,10 +32,10 @@ public class Menu {
 	static void menu_principal() {
 		System.out.println("############### SISTEMA DE ESTOQUE ###############");
 		System.out.println("----------------- MENU PRINCIPAL -----------------");
-		System.out.println(" 1  | Operações com armazem");
-		System.out.println(" 2  | Operações com véiculos de um armazem");
+		System.out.println(" 1  | Operações com Armazem");
+		System.out.println(" 2  | Operações com Veiculos de um Armazem");
 		System.out.println(" 3  | Relatorios do Sistema");
-		System.out.println(" -1 | Finalizar o sistema de estoque.");
+		System.out.println(" -1 | Finalizar o Sistema de Estoque.");
 		System.out.println("--------------------------------------------------");
 		System.out.println("Selecione alguma das opções para continuar . . .");
 		
@@ -44,7 +65,7 @@ public class Menu {
 		System.out.println("Quais das operações desejá realizar com o armazem?");
 		System.out.println(" 1 | Criar Armazem");
 		System.out.println(" 2 | Remover Armazem");
-		System.out.println(" 3 | Ver descrição dos armazem");
+		System.out.println(" 3 | Descrição dos Armazens");
 		System.out.println(" 0 | Cancelar operação");
 		System.out.println("--------------------------------------------------");
 		System.out.println("Selecione alguma das opções para continuar . . .");
@@ -58,50 +79,11 @@ public class Menu {
 			menu_armazem_remover();
 		}
 		else if(entrada == 3) {
-			menu_armazem_criar_decricao();
+			menu_armazem_descricao(0);
 		}
 		else if(entrada == 0) {
 			menu_principal();
 		}
-		/*
-		menu.criarArmazemTerceirizado("Eduardo");
-		menu.criarArmazemContratado("Gabriel",20);
-
-		menu.adicionarMoto("Eduardo", "Bis", 2000, "ABC-1234", 500.00);
-		menu.adicionarCarro("Eduardo", "Celta", 2019, "FOA-9924", 50.00);
-		menu.adicionarOnibus("Eduardo", "Onibus", 2022, "EOF-3259", 100.000);
-		menu.adicionarCarro("Eduardo","CeltINHAA", 2020, "ABC-3125", 0);
-		
-		menu.adicionarMoto("Eduardo", "Bis", 2000, "ABC-2523", 500.00);
-		menu.adicionarCarro("Eduardo", "Celta", 2019, "FOA-5412", 50.00);
-		menu.adicionarOnibus("Eduardo", "Onibus", 2022, "EOF-3215", 100.000);
-		menu.adicionarCarro("Eduardo","CeltINHAA", 2020, "ABC-4215", 0);		
-		
-		menu.removerVeiculo("Eduardo","FOA-5412");
-		menu.removerVeiculo("Eduardo", "EOF-3215");
-		menu.removerVeiculo("Eduardo", "ABC-4215");		
-		
-		menu.adicionarOnibus("Gabriel", "Escolar", 2000, "BOB-0000", 300.00);
-		//menu.relatorioVeiculosArmazem("Eduardo");
-		menu.limparRemovidosTotal("Eduardo");
-		//menu.relatorioVeiculosArmazem("Eduardo");
-		//menu.relatorioTotal();
-		menu.removerVeiculo("Eduardo", "ABC-1234");		
-		
-		
-		menu.relatorioVeiculosArmazem("Eduardo");
-		
-		menu.dadosVeiculoRemovido("Eduardo", "ABC-1234");
-		
-		menu.recuperarVeiculo("Eduardo", "ABC-1234");
-		
-		menu.relatorioVeiculosArmazem("Eduardo");
-		
-		menu.dadosVeiculo("Eduardo", "ABC-1234");
-		
-		//menu.relatorioArmazem("Gabriel");
-		 * 
-		 */
 	}
 
 	// OPÇÃO 1 | ARMAZENS | CRIAR ARMAZENS
@@ -127,7 +109,7 @@ public class Menu {
 			menu_armazem_criar_tercerizado();
 		}
 		else if(entrada == 4) {
-			menu_armazem_criar_decricao();
+			menu_armazem_descricao(1);
 		}
 		else if(entrada == 0) {
 			menu_principal();
@@ -173,21 +155,33 @@ public class Menu {
 	}
 	
 	// OPÇÃO 3 | ARMAZENS | DESCRICAO ARMAZENS
-	static void menu_armazem_criar_decricao(){
+	static void menu_armazem_descricao(int nav){
 		System.out.println("--------------------------------------------------");
-		System.out.println("Monstra as diferenças entre os tipos de armazen");
+		System.out.println("Em nosso Sistema de Estoque, pode possuir 3 tipos de armazéns: próprio, contratado e terceirizado.");
+		System.out.println("------------------------------------ Próprio  ------------------------------------");
+		System.out.println(" O armazém própio, como o nome já diz, é o armazém em que a empresa possuí.Em um \narmazém própio não temos custo em adicionar um veículo porém, teremos um tamanho, \nsendo assim, podemos adicionar o maximo de veículo de acordo com esse tamanho.");
+		System.out.println("----------------------------------- Contratado -----------------------------------");
+		System.out.println(" O armazém contratado é um armazém onde contratamos um espaço para deixar o(s) vei-\nculo(s) da empresa. Em um armazém contratado alugamos um tamanho, sendo assim, po-\ndemos adicionar o maximo de veículo de acordo com esse tamanho.  \n Valor unitário por vaga: 100,00");
+		System.out.println("---------------------------------- Terceirizado ----------------------------------");
+		System.out.println(" O armazém terceirizado é um armazém onde contratamos uma empresa para armazenar nos-\nso veículo. Nesse tipo de armazém, a empresa irá cobrar por veículo adicionado. \n Valor unitário da moto  : 100,00 \n Valor unitário do carro : 200,00 \n Valor unitário do onibus: 600,00");
+		System.out.println("--------------------------------------------------");
+		System.out.println(" 1 | Ver descrição dos veiculos");
 		System.out.println(" 9 | Voltar");
 		System.out.println(" 0 | Cancelar operação");
 		System.out.println("--------------------------------------------------");
 		System.out.println("Selecione alguma das opções para continuar . . .");
-		
 		int entrada = sc.nextInt();
-		
+
 		if(entrada == 9) {
-			menu_armazem();
+			if (nav==0)	menu_armazem();
+			else if(nav==1)menu_armazem_criar();
+			else if(nav==2)menu_veiculo_adicionar_descricao(nav,nav);
 		}
 		else if(entrada == 0) {
 			menu_principal();
+		}
+		else if(entrada == 1) {
+			menu_veiculo_adicionar_descricao(1,nav);
 		}
 	}
 
@@ -242,7 +236,7 @@ public class Menu {
 		
 		else if (entrada ==3) menu_veiculo_adicionar_onibus();
 		
-		else if (entrada ==4) menu_veiculo_adicionar_descrisao();
+		else if (entrada ==4) menu_veiculo_adicionar_descricao(0,0);
 	}
 	// OPÇÃO 1 | VEICULOS | ADICIONAR | MOTO
 	static void menu_veiculo_adicionar_moto() {
@@ -295,19 +289,28 @@ public class Menu {
 		System.out.println("Onibus adicionada com sucesso!");
 		menu_principal();
 }
-	// OPÇÃO 4 | VEICULOS | ADICIONAR | DESCRISAO
-	static void menu_veiculo_adicionar_descrisao() {
+	// OPÇÃO 4 | VEICULOS | ADICIONAR | DESCRICAO
+	static void menu_veiculo_adicionar_descricao(int nav, int aux_nav) {
 		System.out.println("--------------------------------------------------");
-		System.out.println("Monstra as diferenças entre os tipos de veiculos e as vagas e tals");
+		System.out.println("Todos os veiculos dos sistema possui os seguintes atributos: \n ~Placa. \n ~Modelo. \n ~Ano. \n ~Preço \n ~Vaga.");
+		System.out.println("Em nosso Sistema de Estoque, pode possuir 3 tipos de veículos: moto, carro e onibus.");
+		System.out.println("A tabela abaixo ilustra quais são as diferenças entre os tipos de veiculos");
+		System.out.println("-------------------------------------- Moto --------------------------------------");
+		System.out.println(" Vaga ocupada: 0.5");	
+		System.out.println("-------------------------------------- Carro -------------------------------------");
+		System.out.println(" Vaga ocupada: 2");	
+		System.out.println("------------------------------------- Onibus -------------------------------------");
+		System.out.println(" Vaga ocupada: 6");	
+		System.out.println("--------------------------------------------------");
 		System.out.println(" 9 | Voltar");
 		System.out.println(" 0 | Cancelar operação");
 		System.out.println("--------------------------------------------------");
 		System.out.println("Selecione alguma das opções para continuar . . .");
-		
 		int entrada = sc.nextInt();
 		
 		if(entrada == 9) {
-			menu_veiculo();
+			if (nav==0)	menu_veiculo_adicionar();
+			else if(nav!=0)menu_armazem_descricao(aux_nav);
 		}
 		else if(entrada == 0) {
 			menu_principal();
