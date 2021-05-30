@@ -7,7 +7,8 @@ public class Propio extends Armazem {
 	@Override
 	public void relatorioArmazem() {
 		String tipo = "Próprio";		
-		System.out.println("\nNome: " + this.getNome());
+		System.out.println("** #### RELATÓRIO DO ARMAZEM #### **");
+		System.out.println("Nome do armazem: " + this.getNome());
 		System.out.println("Tipo do armazem: " + tipo);
 		if (this.tipo!=3) {
 			System.out.println("Tamanho total do armazem: " + this.getTamanho());

@@ -65,7 +65,8 @@ public class Tercerizado extends Armazem implements CalcularMensalidade {
 	public void relatorioArmazem() {
 		calcularMensalidade();
 		String tipo = "Tercerizado";
-		System.out.println("\nNome: " + this.getNome());
+		System.out.println("** #### RELATÓRIO DO ARMAZEM #### **");
+		System.out.println("Nome do armazem: " + this.getNome());
 		System.out.println("Tipo do armazem: " + tipo);
 
 		System.out.println("Tamanho ocupado: " + this.getTamanho_ocupado());

@@ -132,6 +132,7 @@ public class SistemaEstoque {
 	
 	public void relatorioTotal() {
 		verificarQuantidadeTotalVeiculo();
+		System.out.println("** #### RELATÓRIO TOTAL #### **");
 		System.out.println("Quantidade total de armazens: " + this.quantidade_total_armazem);
 		System.out.println("Quantidade total de veiculos: " + quantidade_total_veiculos);
 		System.out.println("Quantidade de tipos de armazens: " + this.quantidade_tipos_armazens);
@@ -155,6 +156,7 @@ public class SistemaEstoque {
 		
 			}
 		}
+		System.out.println();
 	}
 
 	

@@ -7,12 +7,15 @@ public class Menu {
 		menu_principal();
 		
 		}
-	
+	// MENU PRINCIPAL
 	static void menu_principal() {
+		System.out.println("############### SISTEMA DE ESTOQUE ###############");
+		System.out.println("----------------- MENU PRINCIPAL -----------------");
 		System.out.println(" 1  | Operações com armazem");
-		System.out.println(" 2  | Operaçõesc com véiculos de um armazem");
+		System.out.println(" 2  | Operações com véiculos de um armazem");
 		System.out.println(" 3  | Relatorios do Sistema");
 		System.out.println(" -1 | Finalizar o sistema de estoque.");
+		System.out.println("--------------------------------------------------");
 		System.out.println("Selecione alguma das opções para continuar . . .");
 		
 		int entrada = sc.nextInt(); 
@@ -25,18 +28,27 @@ public class Menu {
 		else if(entrada == 2) {
 			menu_veiculo();
 		}
+		else if(entrada == 3) {
+			menu_relatorio();
+		}
 		
 
 	}
 	
+	
+	// OPERAÇÃO COM ARMAZÉM
+	
 	// OPÇÃO 1 | ARMAZENS
 	static void menu_armazem() {
+		System.out.println("--------------------------------------------------");
 		System.out.println("Quais das operações desejá realizar com o armazem?");
 		System.out.println(" 1 | Criar Armazem");
 		System.out.println(" 2 | Remover Armazem");
 		System.out.println(" 3 | Ver descrição dos armazem");
 		System.out.println(" 0 | Cancelar operação");
+		System.out.println("--------------------------------------------------");
 		System.out.println("Selecione alguma das opções para continuar . . .");
+		
 		
 		int entrada = sc.nextInt(); 
 		if(entrada == 1) {
@@ -94,12 +106,14 @@ public class Menu {
 
 	// OPÇÃO 1 | ARMAZENS | CRIAR ARMAZENS
 	static void menu_armazem_criar() {
+		System.out.println("--------------------------------------------------");
 		System.out.println("Existem três tipos de armazens, quais deles você desejá criar?");
 		System.out.println(" 1 | Armazem Proprio");
 		System.out.println(" 2 | Armazem Contratado");
 		System.out.println(" 3 | Armazem Terceirizado");
 		System.out.println(" 4 | Ver descrição dos armazem");
 		System.out.println(" 0 | Cancelar operação");
+		System.out.println("--------------------------------------------------");
 		System.out.println("Selecione alguma das opções para continuar . . .");
 		
 		int entrada = sc.nextInt(); 
@@ -160,9 +174,11 @@ public class Menu {
 	
 	// OPÇÃO 3 | ARMAZENS | DESCRICAO ARMAZENS
 	static void menu_armazem_criar_decricao(){
+		System.out.println("--------------------------------------------------");
 		System.out.println("Monstra as diferenças entre os tipos de armazen");
 		System.out.println(" 9 | Voltar");
 		System.out.println(" 0 | Cancelar operação");
+		System.out.println("--------------------------------------------------");
 		System.out.println("Selecione alguma das opções para continuar . . .");
 		
 		int entrada = sc.nextInt();
@@ -176,14 +192,19 @@ public class Menu {
 	}
 
 	
+	
+	// OPERAÇÃO COM VEICULO
+	
+	
 	// OPÇÃO 2 | VEICULOS
 	static void menu_veiculo() {
+		System.out.println("--------------------------------------------------");
 		System.out.println(" 1 | Adicionar véiculos no armazem");
 		System.out.println(" 2 | Remover véiculos no armazem");		
 		System.out.println(" 3 | Recuperar véiculos removidos do armazem");
-		System.out.println(" 4 | Ver dados dos véiculos no armazem");
-		System.out.println(" 5 | Limpar histórico de veiculos removidos");
+		System.out.println(" 4 | Limpar histórico de veiculos removidos");
 		System.out.println(" 0 | Cancelar operação");
+		System.out.println("--------------------------------------------------");
 		System.out.println("Selecione alguma das opções para continuar . . .");
 		
 		int entrada = sc.nextInt();
@@ -196,19 +217,19 @@ public class Menu {
 		
 		else if (entrada == 3) menu_veiculo_recuperar();
 		
-		else if (entrada == 4) menu_veiculo_dados();
-		
-		else if (entrada == 5) menu_veiculo_limparH();
+		else if (entrada == 4) menu_veiculo_limparH();
 	}
 
 	// OPÇÃO 1 | VEICULOS | ADICIONAR 
 	static void menu_veiculo_adicionar() {
+		System.out.println("--------------------------------------------------");
 		System.out.println(" Que tipo de veiculo deseja adicionar?");
 		System.out.println(" 1 | Adicionar moto no armazem");
 		System.out.println(" 2 | Adicionar carro no armazem");
 		System.out.println(" 3 | Adicionar onibus no armazem");
 		System.out.println(" 4 | Ver descrissão dos veiculos");
 		System.out.println(" 0 | Cancelar operação");
+		System.out.println("--------------------------------------------------");
 		System.out.println("Selecione alguma das opções para continuar . . .");
 		
 		int entrada = sc.nextInt();
@@ -217,11 +238,11 @@ public class Menu {
 		
 		else if (entrada ==1) menu_veiculo_adicionar_moto();
 		
-		else if (entrada ==1) menu_veiculo_adicionar_carro();
+		else if (entrada ==2) menu_veiculo_adicionar_carro();
 		
-		else if (entrada ==1) menu_veiculo_adicionar_onibus();
+		else if (entrada ==3) menu_veiculo_adicionar_onibus();
 		
-		else if (entrada ==1) menu_veiculo_adicionar_descrisao();
+		else if (entrada ==4) menu_veiculo_adicionar_descrisao();
 	}
 	// OPÇÃO 1 | VEICULOS | ADICIONAR | MOTO
 	static void menu_veiculo_adicionar_moto() {
@@ -276,9 +297,11 @@ public class Menu {
 }
 	// OPÇÃO 4 | VEICULOS | ADICIONAR | DESCRISAO
 	static void menu_veiculo_adicionar_descrisao() {
+		System.out.println("--------------------------------------------------");
 		System.out.println("Monstra as diferenças entre os tipos de veiculos e as vagas e tals");
 		System.out.println(" 9 | Voltar");
 		System.out.println(" 0 | Cancelar operação");
+		System.out.println("--------------------------------------------------");
 		System.out.println("Selecione alguma das opções para continuar . . .");
 		
 		int entrada = sc.nextInt();
@@ -297,22 +320,178 @@ public class Menu {
 		String nome_armazem = sc.next();		
 		System.out.println("Qual a placa do veiculo que deseja remover?");
 		String placa_veiculo = sc.next();
+	
+		System.out.println("Tem certeza que deseja remover o veiculo?");
+		System.out.println("Pressione 1 para confirmar. . .");
 		
-		menu.removerVeiculo(nome_armazem, placa_veiculo);
-		System.out.println("Veiculo removido com sucesso!");
+		int entrada = sc.nextInt();
+
+		if(entrada == 1) {
+			menu.removerVeiculo(nome_armazem, placa_veiculo);
+			System.out.println("Veículo removido com sucesso!");
+			menu_principal();
+		}else {
+			System.out.println("Veículo não removido");
+			menu_principal();
+		}
 	}
 
 	// OPÇÃO 3 | VEICULOS | RECUPERAR 
 	static void menu_veiculo_recuperar() {
+		System.out.println("Qual armazem se encontra o veiculo removido?");
+		String armazem = sc.next();		
+		System.out.println("Qual é a placa do veiculo que deseja ser recuperado?");
+		String placa = sc.next();
 	
+		menu.recuperarVeiculo(armazem, placa);
+		System.out.println("Veiculo recuperado!");
+		menu_principal();
 	}
 	
-	// OPÇÃO 4 | VEICULOS | DADOS VEICULO 
-	static void menu_veiculo_dados() {
-		
-	// OPÇÃO 5 | VEICULOS | LIMPAR HISTORICO 
-	}
+	// OPÇÃO 4 | VEICULOS | LIMPAR HISTORICO 
 	static void menu_veiculo_limparH() {
+		System.out.println("--------------------------------------------------");
+		System.out.println("*Irá limpar permanentemente.");
+		System.out.println(" 1 | Limpar um unico veiculos removido do armazem");
+		System.out.println(" 2 | Limpar todo histórico de veiculos removidos do armazem");
+		System.out.println(" 0 | Cancelar operação");
+		System.out.println("--------------------------------------------------");
+		System.out.println("Selecione alguma das opções para continuar . . .");	
+		
+		int entrada = sc.nextInt();
+		
+		if (entrada == 0) menu_principal();
+		
+		else if(entrada == 1) menu_veiculo_limparH_unidade();
+		
+		else if(entrada == 2) menu_veiculo_limparH_total();
+	}
+	// OPÇÃO 1 | VEICULOS | LIMPAR HISTORICO | UNIDADE
+	static void menu_veiculo_limparH_unidade() {
+		System.out.println("Qual é o armazém que deseja retirar o veículo do histórico de removidos?");
+		String armazem = sc.next();
+		System.out.println("Qual é a placa do veiculo que deseja retirar do histórico de removido?");
+		String placa = sc.next();
+		
+		System.out.println("Tem certeza que deseja remover o veiculo do histórico de removidos?");
+		System.out.println("Pressione 1 para confirmar. . .");
+		int entrada = sc.nextInt();
+
+		if(entrada == 1) {
+			menu.limparRemovidosUnidade(armazem, placa);
+			System.out.println("Veículo removido do histórico com sucesso!");
+			menu_principal();
+		}else {
+			System.out.println("Veículo não removido do histórico de removidos");
+			menu_principal();
+		}
 		
 	}
+	// OPÇÃO 2 | VEICULOS | LIMPAR HISTORICO | TOTAL
+	static void menu_veiculo_limparH_total() {
+		System.out.println("Qual é o armazém que deseja limpar o histórico?");
+		String armazem = sc.next();
+
+		System.out.println("Tem certeza que deseja limpar o histórico de removidos?");
+		System.out.println("Pressione 1 para confirmar. . .");
+		int entrada = sc.nextInt();
+
+		if(entrada == 1) {
+			menu.limparRemovidosTotal(armazem);
+			System.out.println("Histórico limpo com sucesso!");
+			menu_principal();
+		}else {
+			System.out.println("Histórico não foi limpo!");
+			menu_principal();
+		}
+	}
+
+
+	// RELATÓRIOS
+	
+	// OPÇÃO 3 | RELATÓRIO 
+	static void menu_relatorio() {
+		System.out.println("--------------------------------------------------");
+		System.out.println(" 1 | Relatório dos véiculos no armazem");
+		System.out.println(" 2 | Relatório de todos veiculos do armazém");
+		System.out.println(" 3 | Relatório do armazém");
+		System.out.println(" 4 | Relatório total");
+		System.out.println(" 0 | Cancelar operação");
+		System.out.println("--------------------------------------------------");
+		System.out.println("Selecione alguma das opções para continuar . . .");
+		
+		int entrada = sc.nextInt();
+		
+		if(entrada == 0)menu_principal();
+		
+		else if(entrada == 1)menu_relatorio_dados();
+
+		else if(entrada == 2)menu_relatorio_veiculoArmazem();
+
+		else if(entrada == 3)menu_relatorio_armazem();
+		
+		else if(entrada == 4)menu_relatorio_total();
+	}
+
+	// OPÇÃO 1 | RELATÓRIO | DADOS VEICULO 
+	static void menu_relatorio_dados() {
+		System.out.println("--------------------------------------------------");
+		System.out.println(" 1 | Dados do veiculo do armazém");
+		System.out.println(" 2 | Dados do veiculo removido do armazém");
+		System.out.println(" 0 | Cancelar operação");
+		System.out.println("--------------------------------------------------");
+		System.out.println("Selecione alguma das opções para continuar . . .");	
+		
+		int entrada = sc.nextInt();
+		
+		if (entrada == 0) menu_principal();
+		
+		else if(entrada == 1) menu_relatorio_dados_veiculo();
+		else if(entrada == 2) menu_relatorio_dados_veiculoRemovido();
+	}
+	// OPÇÃO 1 | RELATÓRIO | DADOS VEICULO | CONTIDO NO ARMAZEM
+	static void menu_relatorio_dados_veiculo() {
+		System.out.println("Qual é o armazem que está contido o veículo? ");
+		String armazem = sc.next();
+		System.out.println("Qual é a placa do veículo? ");
+		String placa = sc.next();
+		menu.dadosVeiculo(armazem, placa);
+		menu_principal();
+	}
+	// OPÇÃO 2 | RELATÓRIO | DADOS VEICULO | REMOVIDO DO ARMAZEM
+	static void menu_relatorio_dados_veiculoRemovido() {
+		System.out.println("Qual é o armazem que estava contido o veículo? ");
+		String armazem = sc.next();
+		System.out.println("Qual é era placa do veículo? ");
+		String placa = sc.next();
+		menu.dadosVeiculoRemovido(armazem, placa);
+		menu_principal();
+	}
+	
+	
+	// OPÇÃO 2 | RELATÓRIO | VEICULOS ARMAZEM 
+	static void menu_relatorio_veiculoArmazem() {
+		System.out.println("Qual é o armazem que deseja emitir o relatório de veiculos? ");
+		String armazem = sc.next();
+		menu.relatorioVeiculosArmazem(armazem);
+		menu_principal();
+	}
+	
+	// OPÇÃO 3 | RELATÓRIO | ARMAZEM 
+	static void menu_relatorio_armazem() {
+		System.out.println("Qual é o armazem que deseja emitir o relatório? ");
+		String armazem = sc.next();
+		menu.relatorioArmazem(armazem);
+		menu_principal();
+	}
+	
+	// OPÇÃO 4 | RELATÓRIO | TOTAL 
+	static void menu_relatorio_total() {
+		menu.relatorioTotal();
+		menu_principal();
+	}
+	
+
+	
+	
 }
