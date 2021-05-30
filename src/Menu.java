@@ -41,7 +41,9 @@ public class Menu {
 		
 		int entrada = sc.nextInt(); 
 		
-		if(entrada == -1);
+		if(entrada == -1) {
+			System.out.println("\n############### SISTEMA FINALIZADO ###############");
+		}
 		
 		else if(entrada == 1) {
 			menu_armazem();
