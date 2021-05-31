@@ -45,16 +45,16 @@ public class Menu {
 				menu_relatorio();
 			}
 			else if (entrada >= 4) {
-				System.out.println("\nVocê inseriu uma entrada não existente, por favor selecione as opções validas\n");
+				System.out.println("Você inseriu uma entrada não existente, por favor selecione as opções validas\n");
 				menu_principal();
 			}
 			else if (entrada <-1 ) {
-				System.out.println("\nVocê inseriu uma entrada não existente, por favor selecione as opções validas\n");
+				System.out.println("Você inseriu uma entrada não existente, por favor selecione as opções validas\n");
 				menu_principal();
 			}
 		
 		} catch (InputMismatchException e) {
-			System.out.println("\nEntrada invalida, selecine as opções validas\n");
+			System.out.println("Entrada invalida, selecine as opções validas\n");
 			sc.nextLine();
 			menu_principal();
 		}
@@ -76,21 +76,34 @@ public class Menu {
 		System.out.println("--------------------------------------------------");
 		System.out.println("Selecione alguma das opções para continuar . . .");
 		
-		
-		int entrada = sc.nextInt(); 
-		if(entrada == 1) {
-			menu_armazem_criar();
-		}
-		else if(entrada == 2) {
-			menu_armazem_remover();
-		}
-		else if(entrada == 3) {
-			menu_armazem_descricao(0);
-		}
-		else if(entrada == 0) {
-			System.out.println("\nOperação cancelada!\n");
-			menu_principal();
-		}
+		try {
+			int entrada = sc.nextInt(); 
+			if(entrada == 1) {
+				menu_armazem_criar();
+			}
+			else if(entrada == 2) {
+				menu_armazem_remover();
+			}
+			else if(entrada == 3) {
+				menu_armazem_descricao(0);
+			}
+			else if(entrada == 0) {
+				System.out.println("\nOperação cancelada!\n");
+				menu_principal();
+			}
+			else if (entrada >= 4) {
+				System.out.println("Você inseriu uma entrada não existente, por favor selecione as opções validas\n");
+				menu_principal();
+			}
+			else if (entrada <-1 ) {
+				System.out.println("Você inseriu uma entrada não existente, por favor selecione as opções validas\n");
+				menu_principal();
+			}
+		}catch (InputMismatchException e) {
+				System.out.println("Entrada invalida, selecine as opções validas\n");
+				sc.nextLine();
+				menu_principal();
+			}
 	}
 
 	// OPÇÃO 1 | ARMAZENS | CRIAR ARMAZENS
