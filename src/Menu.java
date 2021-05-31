@@ -94,16 +94,17 @@ public class Menu {
 			}
 			else if (entrada >= 4) {
 				System.out.println("Você inseriu uma entrada não existente, por favor selecione as opções validas\n");
-				menu_principal();
+				menu_armazem();
 			}
-			else if (entrada <-1 ) {
+			else if (entrada < 0 ) {
 				System.out.println("Você inseriu uma entrada não existente, por favor selecione as opções validas\n");
-				menu_principal();
+				menu_armazem();
 			}
+			
 		}catch (InputMismatchException e) {
 				System.out.println("Entrada invalida, selecine as opções validas\n");
 				sc.nextLine();
-				menu_principal();
+				menu_armazem();
 			}
 	}
 
@@ -119,21 +120,35 @@ public class Menu {
 		System.out.println("--------------------------------------------------");
 		System.out.println("Selecione alguma das opções para continuar . . .");
 		
-		int entrada = sc.nextInt(); 
-		if(entrada == 1) {
-			menu_armazem_criar_proprio();
-		}
-		else if(entrada == 2) {
-			menu_armazem_criar_contratado();
-		}
-		else if(entrada == 3) {
-			menu_armazem_criar_tercerizado();
-		}
-		else if(entrada == 4) {
-			menu_armazem_descricao(1);
-		}
-		else if(entrada == 0) {
-			menu_principal();
+		try {
+			int entrada = sc.nextInt(); 
+			if(entrada == 1) {
+				menu_armazem_criar_proprio();
+			}
+			else if(entrada == 2) {
+				menu_armazem_criar_contratado();
+			}
+			else if(entrada == 3) {
+				menu_armazem_criar_tercerizado();
+			}
+			else if(entrada == 4) {
+				menu_armazem_descricao(1);
+			}
+			else if(entrada == 0) {
+				menu_principal();
+			}
+			else if (entrada > 4) {
+				System.out.println("Você inseriu uma entrada não existente, por favor selecione as opções validas\n");
+				menu_principal();
+			}
+			else if (entrada <-0 ) {
+				System.out.println("Você inseriu uma entrada não existente, por favor selecione as opções validas\n");
+				menu_principal();
+			}
+		}catch  (InputMismatchException e) {
+			System.out.println("Entrada invalida, selecine as opções validas\n");
+			sc.nextLine();
+			menu_armazem();
 		}
 	}
 	// OPÇÃO 1 | ARMAZENS | CRIAR ARMAZENS | ARMAZEM PROPRIO
@@ -228,18 +243,36 @@ public class Menu {
 		System.out.println(" 0 | Cancelar operação");
 		System.out.println("--------------------------------------------------");
 		System.out.println("Selecione alguma das opções para continuar . . .");
-		int entrada = sc.nextInt();
-
-		if(entrada == 9) {
-			if (nav==0)	menu_armazem();
-			else if(nav==1)menu_armazem_criar();
-			else if(nav==2)menu_veiculo_adicionar_descricao(nav,nav);
-		}
-		else if(entrada == 0) {
-			menu_principal();
-		}
-		else if(entrada == 1) {
-			menu_veiculo_adicionar_descricao(1,nav);
+		
+		
+		
+		try {
+			int entrada = sc.nextInt();
+			if(entrada == 9) {
+				if (nav==0)	menu_armazem();
+				else if(nav==1)menu_armazem_criar();
+				else if(nav==2)menu_veiculo_adicionar_descricao(nav,nav);
+			}
+			else if(entrada == 0) {
+				menu_principal();
+			}
+			else if(entrada == 1) {
+				menu_veiculo_adicionar_descricao(1,nav);
+			}
+			
+			else if (entrada > 1 ) {
+				System.out.println("Você inseriu uma entrada não existente, por favor selecione as opções validas\n");
+				menu_armazem_descricao(nav);
+			}
+			else if (entrada < 0 ) {
+				System.out.println("Você inseriu uma entrada não existente, por favor selecione as opções validas\n");
+				menu_armazem_descricao(nav);
+			}
+		}catch (InputMismatchException e) {
+			System.out.println("Entrada invalida, selecine as opções validas\n");
+			sc.nextLine();
+			
+			menu_armazem_descricao(nav);
 		}
 	}
 
@@ -259,17 +292,34 @@ public class Menu {
 		System.out.println("--------------------------------------------------");
 		System.out.println("Selecione alguma das opções para continuar . . .");
 		
-		int entrada = sc.nextInt();
-		
-		if(entrada == 0) menu_principal();
-		
-		else if (entrada == 1) menu_veiculo_adicionar();
-		
-		else if (entrada == 2) menu_veiculo_remover();
-		
-		else if (entrada == 3) menu_veiculo_recuperar();
-		
-		else if (entrada == 4) menu_veiculo_limparH();
+		try {
+			int entrada = sc.nextInt();
+			
+			if(entrada == 0) menu_principal();
+			
+			else if (entrada == 1) menu_veiculo_adicionar();
+			
+			else if (entrada == 2) menu_veiculo_remover();
+			
+			else if (entrada == 3) menu_veiculo_recuperar();
+			
+			else if (entrada == 4) menu_veiculo_limparH();
+			
+			else if (entrada > 4) {
+				System.out.println("Você inseriu uma entrada não existente, por favor selecione as opções validas\n");
+				menu_veiculo();
+			}
+			
+			else if(entrada < 0) {
+				System.out.println("Você inseriu uma entrada não existente, por favor selecione as opções validas\n");
+				menu_veiculo();
+			}
+			
+		}catch (InputMismatchException e) {
+			System.out.println("Entrada invalida, selecine as opções validas\n");
+			sc.nextLine();
+			menu_veiculo();
+		}
 	}
 
 	// OPÇÃO 1 | VEICULOS | ADICIONAR 
@@ -284,17 +334,39 @@ public class Menu {
 		System.out.println("--------------------------------------------------");
 		System.out.println("Selecione alguma das opções para continuar . . .");
 		
-		int entrada = sc.nextInt();
-		
-		if (entrada == 0) menu_principal();
-		
-		else if (entrada ==1) menu_veiculo_adicionar_moto();
-		
-		else if (entrada ==2) menu_veiculo_adicionar_carro();
-		
-		else if (entrada ==3) menu_veiculo_adicionar_onibus();
-		
-		else if (entrada ==4) menu_veiculo_adicionar_descricao(0,0);
+		try {
+			int entrada = sc.nextInt();
+			
+			if (entrada == 0) menu_principal();
+			
+			else if (entrada ==1) menu_veiculo_adicionar_moto();
+			
+			else if (entrada ==2) menu_veiculo_adicionar_carro();
+			
+			else if (entrada ==3) menu_veiculo_adicionar_onibus();
+			
+			else if (entrada ==4) menu_veiculo_adicionar_descricao(0,0);
+			
+			else if (entrada < 0) {
+				System.out.println("Você inseriu uma entrada não existente, por favor selecione as opções validas\n");
+				menu_veiculo_adicionar();
+			}
+			
+			else if (entrada > 4) {
+				System.out.println("Você inseriu uma entrada não existente, por favor selecione as opções validas\n");
+				menu_veiculo_adicionar();
+			}
+			
+			else if(entrada < 0) {
+				System.out.println("Você inseriu uma entrada não existente, por favor selecione as opções validas\n");
+				menu_veiculo_adicionar();
+			}
+			
+		}catch (InputMismatchException e) {
+			System.out.println("Entrada invalida, selecine as opções validas\n");
+			sc.nextLine();
+			menu_veiculo_adicionar();
+		}
 	}
 	// OPÇÃO 1 | VEICULOS | ADICIONAR | MOTO
 	static void menu_veiculo_adicionar_moto() {
@@ -456,14 +528,37 @@ public class Menu {
 		System.out.println(" 0 | Cancelar operação");
 		System.out.println("--------------------------------------------------");
 		System.out.println("Selecione alguma das opções para continuar . . .");
-		int entrada = sc.nextInt();
 		
-		if(entrada == 9) {
-			if (nav==0)	menu_veiculo_adicionar();
-			else if(nav!=0)menu_armazem_descricao(aux_nav);
-		}
-		else if(entrada == 0) {
-			menu_principal();
+		try {
+			int entrada = sc.nextInt();
+			
+			if(entrada == 9) {
+				if (nav==0)	menu_veiculo_adicionar();
+				else if(nav!=0)menu_armazem_descricao(aux_nav);
+			}
+			else if(entrada == 0) {
+				menu_principal();
+			}
+			else if (entrada > 9) {
+				System.out.println("Entrada invalida, selecine as opções validas\n");
+				menu_veiculo_adicionar_descricao(nav,aux_nav);
+				
+			}
+			else if (entrada < 0) {
+				System.out.println("Entrada invalida, selecine as opções validas\n");
+				menu_veiculo_adicionar_descricao(nav,aux_nav);
+				
+			}
+			
+			else if (entrada > 0 && entrada < 9 ) {
+				System.out.println("Entrada invalida, selecine as opções validas\n");
+				menu_veiculo_adicionar_descricao(nav,aux_nav);
+				
+			}
+		}catch (InputMismatchException e) {
+			System.out.println("Entrada invalida, selecine as opções validas\n");
+			sc.nextLine();
+			menu_veiculo_adicionar_descricao(nav,aux_nav);
 		}
 	}
 	
@@ -513,13 +608,24 @@ public class Menu {
 		System.out.println("--------------------------------------------------");
 		System.out.println("Selecione alguma das opções para continuar . . .");	
 		
-		int entrada = sc.nextInt();
-		
-		if (entrada == 0) menu_principal();
-		
-		else if(entrada == 1) menu_veiculo_limparH_unidade();
-		
-		else if(entrada == 2) menu_veiculo_limparH_total();
+		try {
+			int entrada = sc.nextInt();
+			
+			if (entrada == 0) menu_principal();
+			
+			else if(entrada == 1) menu_veiculo_limparH_unidade();
+			
+			else if(entrada == 2) menu_veiculo_limparH_total();
+			
+			else if(entrada > 3) {
+				System.out.println("Você inseriu uma entrada não existente, por favor selecione as opções validas\n");
+				menu_veiculo_limparH();
+			}
+		} catch (InputMismatchException e) {
+			System.out.println("Entrada invalida, selecine as opções validas\n");
+			sc.nextLine();
+			menu_veiculo_adicionar();
+		}
 	}
 	// OPÇÃO 1 | VEICULOS | LIMPAR HISTORICO | UNIDADE
 	static void menu_veiculo_limparH_unidade() {
@@ -578,19 +684,36 @@ public class Menu {
 		System.out.println("--------------------------------------------------");
 		System.out.println("Selecione alguma das opções para continuar . . .");
 		
-		int entrada = sc.nextInt();
-		
-		if(entrada == 0) {
-			System.out.println("\nOperação cancelada!\n");
-			menu_principal();
+		try {
+			int entrada = sc.nextInt();
+			
+			if(entrada == 0) {
+				System.out.println("\nOperação cancelada!\n");
+				menu_principal();
+			}
+			else if(entrada == 1)menu_relatorio_dados();
+	
+			else if(entrada == 2)menu_relatorio_veiculoArmazem();
+	
+			else if(entrada == 3)menu_relatorio_armazem();
+			
+			else if(entrada == 4)menu_relatorio_total();
+			
+			else if (entrada > 4) {
+				System.out.println("Você inseriu uma entrada não existente, por favor selecione as opções validas\n");
+				menu_relatorio();
+			}
+			
+			else if(entrada < 0) {
+				System.out.println("Você inseriu uma entrada não existente, por favor selecione as opções validas\n");
+				menu_relatorio();
+			}
+			
+		}catch (InputMismatchException e) {
+			System.out.println("Entrada invalida, selecine as opções validas\n");
+			sc.nextLine();
+			menu_relatorio();
 		}
-		else if(entrada == 1)menu_relatorio_dados();
-
-		else if(entrada == 2)menu_relatorio_veiculoArmazem();
-
-		else if(entrada == 3)menu_relatorio_armazem();
-		
-		else if(entrada == 4)menu_relatorio_total();
 	}
 
 	// OPÇÃO 1 | RELATÓRIO | DADOS VEICULO 
@@ -602,12 +725,28 @@ public class Menu {
 		System.out.println("--------------------------------------------------");
 		System.out.println("Selecione alguma das opções para continuar . . .");	
 		
-		int entrada = sc.nextInt();
-		
-		if (entrada == 0) menu_principal();
-		
-		else if(entrada == 1) menu_relatorio_dados_veiculo();
-		else if(entrada == 2) menu_relatorio_dados_veiculoRemovido();
+		try {
+			int entrada = sc.nextInt();
+			
+			if (entrada == 0) menu_principal();
+			
+			else if(entrada == 1) menu_relatorio_dados_veiculo();
+			else if(entrada == 2) menu_relatorio_dados_veiculoRemovido();
+			
+			else if (entrada < 0) {
+				System.out.println("Você inseriu uma entrada não existente, por favor selecione as opções validas\n");
+				menu_relatorio_dados();
+			}
+			
+			else if (entrada > 2) {
+				System.out.println("Você inseriu uma entrada não existente, por favor selecione as opções validas\n");
+				menu_relatorio_dados();
+			}
+		}catch (InputMismatchException e) {
+			System.out.println("Entrada invalida, selecine as opções validas\n");
+			sc.nextLine();
+			menu_relatorio_dados();
+		}
 	}
 	// OPÇÃO 1 | RELATÓRIO | DADOS VEICULO | CONTIDO NO ARMAZEM
 	static void menu_relatorio_dados_veiculo() {
