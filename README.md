@@ -15,13 +15,13 @@
 
   As tabelas a seguir representa as classes com seus respectivos métodos e atributos. Através da tabela, observa-se os conceitos citados a cima. 
 
-![](img//tabela.jpg) <br>
+![](img//tabela.png) <br>
 Representa a classe veículo e suas subclasses com seus respectivos métodos e atributos 
 
-![](img//tabela1.jpg) <br>
+![](img//tabela1.png) <br>
 Representa a classe armazém e suas subclasses com seus respectivos métodos e atributos 
 
-![](img//tabela2.jpg) <br>
+![](img//tabela2.png) <br>
 Representa a classe Sistema de Estoque que gerencia todas as classes contidas no sistema com seus respectivos métodos e atributos. 
 
 
