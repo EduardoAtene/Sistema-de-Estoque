@@ -13,8 +13,8 @@ public abstract class Armazem {
 	private int quantidade_moto_T = 0;
 	private int quantidade_carro_T = 0;
 	private int quantidade_onibus_T = 0;	
-	private Map<String,Veiculo> veiculos = new HashMap<>();
-	private Map<String,Veiculo> veiculos_removidos = new HashMap<>();
+	protected Map<String,Veiculo> veiculos = new HashMap<>();
+	protected Map<String,Veiculo> veiculos_removidos = new HashMap<>();
 	private double tamanho_ocupado= 0;
 	private double tamanho_disponivel= this.tamanho;
 	public Armazem(String nome, int tipo,double tamanho) {
