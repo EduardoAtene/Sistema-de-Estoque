@@ -33,6 +33,7 @@ public class Menu {
 			
 			if(entrada == -1) {
 				System.out.println("\n############### SISTEMA FINALIZADO ###############");
+				System.exit(1);
 			}
 	
 			else if(entrada == 1) {
@@ -138,11 +139,8 @@ public class Menu {
 	// OPÇÃO 1 | ARMAZENS | CRIAR ARMAZENS | ARMAZEM PROPRIO
 	static void menu_armazem_criar_proprio() {
 		System.out.println("Qual é o nome do seu armazem?");
-		String nome = sc.next();
-		if(menu.armazens.get(nome)!=null) {
-			System.out.println("Armazém já existente.");
-			menu_principal();
-		};
+		String armazem = sc.next();
+		verificarExistenciaArmazem_EXISTE(menu.armazens.get(armazem));
 		
 		double tamanho=0;
 		int verific = 0;
@@ -159,26 +157,47 @@ public class Menu {
 						+ "Observação: Não utilize '.' para indicar um valor flutuante, utilize virgula ','\n"
 						+ "Se deseja cancelar essa operação, insira o valor 0");
 			}
+			sc.nextLine();
 		}while(verific==0);
 
 		
-		menu.criarArmazemProprio(nome, tamanho);
+		menu.criarArmazemProprio(armazem, tamanho);
 		menu_principal();
 	}
 	// OPÇÃO 2 | ARMAZENS | CRIAR ARMAZENS | ARMAZEM CONTRATADO
 	static void menu_armazem_criar_contratado() {
 		System.out.println("Qual é o nome do seu armazem?");
-		String nome = sc.next();
-		System.out.println("Qual é o tamanho que deseja alugar um armazem contratado?");
-		double tamanho = sc.nextDouble();
-		menu.criarArmazemContratado(nome, tamanho);
+		String armazem = sc.next();
+		verificarExistenciaArmazem_EXISTE(menu.armazens.get(armazem));
+		
+		double tamanho=0;
+		int verific = 0;
+		
+		do {
+			try {
+				System.out.println("Qual é o tamanho do seu armazem?");
+				tamanho = sc.nextDouble();
+				if(tamanho == 0)menu_principal();
+				else if(tamanho>0);
+				else verific=1;
+			}catch (InputMismatchException e) {
+				System.out.println("Entrada inválida. Por favor, insira uma entrada do tipo flutuante.\n"
+						+ "Observação: Não utilize '.' para indicar um valor flutuante, utilize virgula ','\n"
+						+ "Se deseja cancelar essa operação, insira o valor 0");
+			}
+			sc.nextLine();
+		}while(verific==0);
+
+		
+		menu.criarArmazemContratado(armazem, tamanho);
 		menu_principal();
 	}
 	// OPÇÃO 3 | ARMAZENS | CRIAR ARMAZENS | ARMAZEM TERCEIRIZADO
 	static void menu_armazem_criar_tercerizado() {
 		System.out.println("Qual é o nome do seu armazem?");
-		String nome = sc.next();
-		menu.criarArmazemTerceirizado(nome);
+		String armazem = sc.next();
+		verificarExistenciaArmazem_EXISTE(menu.armazens.get(armazem));
+		menu.criarArmazemTerceirizado(armazem);
 		menu_principal();
 	}
 	
@@ -188,6 +207,7 @@ public class Menu {
 		System.out.println("*Se remover o armazem irá perder todos dados contidos nele.");
 		System.out.println("Informe qual o nome do armazém que deseja remover:");
 		String armazem = sc.next();
+		verificarExistenciaArmazem(menu.armazens.get(armazem));
 		menu.removerArmazem(armazem);
 		menu_principal();
 	}
@@ -303,6 +323,7 @@ public class Menu {
 
 		System.out.println("Qual é a placa da moto? ");
 		String placa = sc.next();
+		verificarExistenciaPlaca_EXISTE(menu.armazens.get(armazem).veiculos.get(placa));
 		
 		float preco = 0;
 		verific = 0;
@@ -350,6 +371,7 @@ public class Menu {
 
 		System.out.println("Qual é a placa do carro? ");
 		String placa = sc.next();
+		verificarExistenciaPlaca_EXISTE(menu.armazens.get(armazem).veiculos.get(placa));
 		
 		float preco = 0;
 		verific = 0;
@@ -396,6 +418,7 @@ public class Menu {
 
 		System.out.println("Qual é a placa do onibus? ");
 		String placa = sc.next();
+		verificarExistenciaPlaca_EXISTE(menu.armazens.get(armazem).veiculos.get(placa));
 		
 		float preco = 0;
 		verific = 0;
@@ -476,9 +499,7 @@ public class Menu {
 		System.out.println("Qual é a placa do veiculo que deseja ser recuperado?");
 		String placa = sc.next();
 		verificarExistenciaPlaca(menu.armazens.get(armazem).veiculos_removidos.get(placa));
-	
 		menu.recuperarVeiculo(armazem, placa);
-		System.out.println("Veiculo recuperado!");
 		menu_principal();
 	}
 	
@@ -504,8 +525,10 @@ public class Menu {
 	static void menu_veiculo_limparH_unidade() {
 		System.out.println("Qual é o armazém que deseja retirar o veículo do histórico de removidos?");
 		String armazem = sc.next();
+		verificarExistenciaArmazem(menu.armazens.get(armazem));
 		System.out.println("Qual é a placa do veiculo que deseja retirar do histórico de removido?");
 		String placa = sc.next();
+		verificarExistenciaPlaca(menu.armazens.get(armazem).veiculos_removidos.get(placa));
 		
 		System.out.println("Tem certeza que deseja remover o veiculo do histórico de removidos?");
 		System.out.println("Pressione 1 para confirmar. . .");
@@ -525,6 +548,7 @@ public class Menu {
 	static void menu_veiculo_limparH_total() {
 		System.out.println("Qual é o armazém que deseja limpar o histórico?");
 		String armazem = sc.next();
+		verificarExistenciaArmazem(menu.armazens.get(armazem));
 
 		System.out.println("Tem certeza que deseja limpar o histórico de removidos?");
 		System.out.println("Pressione 1 para confirmar. . .");
@@ -615,7 +639,6 @@ public class Menu {
 		String armazem = sc.next();
 		verificarExistenciaArmazem(menu.armazens.get(armazem));
 		menu.relatorioVeiculosArmazem(armazem);
-		
 		menu_principal();
 	}
 	
@@ -636,7 +659,7 @@ public class Menu {
 	
 
 	
-	// TRATANDO EXECÇÕES
+	// VERIFICANDO
 	
 	static private void verificarExistenciaArmazem(Armazem armazem) {
 		if (armazem == null) {
@@ -647,6 +670,19 @@ public class Menu {
 	static private void verificarExistenciaPlaca(Veiculo veiculo) {
 		if (veiculo == null) {
 			System.out.println("O veiculo inexistente!!");
+			menu_principal();
+		}
+	}
+	static private void verificarExistenciaPlaca_EXISTE (Veiculo veiculo) {
+		if (veiculo != null) {
+			System.out.println("A placa do veiculo condiz com um veiculo existente no sistema!!"
+					+ "\nNão foi possível adicionar este veiculo no armazém.");
+			menu_principal();
+		}
+	}
+	static private void verificarExistenciaArmazem_EXISTE (Armazem armazem) {
+		if (armazem != null) {
+			System.out.println("O nome do armazem condiz com um armazem existente no sistema!!");
 			menu_principal();
 		}
 	}

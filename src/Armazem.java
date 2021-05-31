@@ -135,6 +135,7 @@ public abstract class Armazem {
 			if((veiculos.get(placa).getTipo() == 1))quantidade_moto++;
 			else if(veiculos.get(placa).getTipo() == 2)quantidade_carro++;
 			else if(veiculos.get(placa).getTipo() == 3)quantidade_onibus++;
+			System.out.println("Veiculo recuperado!");
 			
 			this.tamanho_ocupado =(double)((quantidade_moto*0.5) + (quantidade_carro * 2) + (quantidade_onibus*6));
 			this.tamanho_disponivel =(this.tamanho - this.tamanho_ocupado);
