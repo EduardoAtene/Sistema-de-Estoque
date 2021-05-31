@@ -6,15 +6,7 @@ public class Menu {
 	static SistemaEstoque menu = new SistemaEstoque();
 	
 	public static void main(String[] args) {
-		menu.criarArmazemContratado("Argentinx", 21);
-
 		
-
-		menu.adicionarOnibus("Argentinx", "Escolar", 2020, "DEC-1312", 150000.00);
-		menu.adicionarOnibus("Argentinx", "Fundi", 2020, "VSF-1547", 200000.00);
-		menu.adicionarCarro("Argentinx", "Celta", 2030, "ABC-1234", 5000.00);
-		menu.adicionarOnibus("Argentinx", "RAUL", 2020, "DEF-1234", 150000.00);
-
 		menu_principal();
 		}
 	// MENU PRINCIPAL
