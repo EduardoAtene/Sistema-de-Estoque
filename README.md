@@ -1,35 +1,28 @@
 # Sistema-de-Estoque
 <br>
 
-Uma empresa de vendas de automóveis, necessita de um sistema que gerencie seus veículos em
-estoque. Através dele, o usuário poderá adicionar um novo automóvel, realizar buscas no estoque,
-alterar o valor, emitir relatórios dos veículos vendidos e em estoque, entre outros.<br>
+## Descrição do Sistema
 
-A arquitetura do sistema é voltada a orientação de objetos. O sistema é composto pelasseguintes
-classes: Veículo, Carro, Moto, Ônibus, SistemaEstoque e Testes. A classe que vai gerenciar as classes
-será a “SistemaEstoque”. Já as outras classes possuirão os atributos e métodos mencionados no
-parágrafo abaixo. <br>
+  Desenvolvemos um sistema de gerenciamento de estoque de automóveis. Através dele, o usuário poderá gerenciar os veículos contidos em seus armazéns e também poderá solicitar relatórios que auxiliaram no gerenciamento e tomada de decisões da empresa. 
 
-Todo veículo deve possuir um ID, que contém a identificação do veículo, a quantidade, modelo,
-ano e valor. Também, todo veículo pode adicionar, remover e alterar o valor. Entretanto, o ônibus,
-por possuir muito espaço, poderá ter somente 5 ônibus no estoque, independente do modelo (ou
-seja, quando possuir 5 ônibus no estoque, não poderá adicionar mais). Já o carro, pode possuir
-somente 10. A moto não importa a quantidade, posso adicionar quantas vezes quiser. Tanto carro,
-quanto moto e ônibus podem ver a quantidade que foram vendidos e o total deles. Se a quantidade
-de veículos for igual a 0, deve-se remover da lista. Tanto o ônibus quanto o carro devem conter uma
-variável armazenando a quantidade de assentos presentes. Também, o carro e a moto poderão ter
-tipos diferentes, pode existir tanto moto e carro elétricos quanto moto e carro movidos à gasolina.
-Quando um desses veículos for adicionado ao estoque, o funcionário deve verificar se são elétricos ou
-movido a gasolina. Se são elétricos, o funcionário deve verificar se a bateria dele está cheia. Se não
-estiver cheia, deve-se carregar a bateria e informar que a bateria está sendo carregada. Se estiver
-cheia, deve-se informar que a bateria já está cheia. Se for movido a gasolina, não acontecerá nada.<br>
+  Nosso sistema conta com algumas entidades: Armazéns: Próprio, Contratado e Terceirizado; Veículos: Carro, Moto e Ônibus; e o Sistema de Estoque. 
 
-O sistema de estoque deve conter uma estrutura de armazenamento de veículos, com chave (ID)
-e valor. Também, pode-se fazer uma busca para verificar se possui veículo em estoque, pode
-encomendar mais veículos, adicionando na estrutura de armazenamento e pode-se alterar o valor do
-veículo. Também, o sistema pode gerar um relatório contendo a quantidade total de veículos no
-estoque (independentemente da quantidade por modelos), quantidade total modelos de veículos e a
-quantidade total de carros, motos e ônibus.
+  O sistema trabalha com 3 tipos de armazéns, conforme listado acima. Os armazéns possuem um identificador único, que é o nome (key). Através desses armazéns, poderá ser realizado o gerenciamento dos veículos.  Entretanto, existe armazéns onde há custo em armazenar o veículo. O armazém próprio não tem custo. Já os armazéns contratados e terceirizados têm custo. O armazém contratado se baseia no tamanho do armazém que tu vais contratar, ou seja, a cada 1 tamanho de espaço é cobrado uma taxa. Já o armazém terceirizado se baseia no tipo de veículo que irá ser armazenado, ou seja, a moto, carro e ônibus possui um valor por unidade. 
+  Também, o sistema pode possuir 3 tipos de veículos, conforme listado acima (Carro, Moto e Ônibus). Os veículos possuem um identificar único, que é a placa (key). 
+
+## Conclusão
+  O sistema foi desenvolvido utilizando conceitos orientada a objetos (atributos e métodos). Também, em nosso sistema, foi aplicado conceitos de herança, polimorfismo, classes abstratas, interface, key-value, hashmap, entre outros. Além disso, foi realizado o tratamento de exceções. O sistema possui uma interface interativa para o usuário, que é representado pela classe menu. 
+
+  As tabelas a seguir representa as classes com seus respectivos métodos e atributos. Através da tabela, observa-se os conceitos citados a cima. 
 
 ![](img//tabela.jpg) <br>
+Representa a classe veículo e suas subclasses com seus respectivos métodos e atributos 
+
+![](img//tabela1.jpg) <br>
+Representa a classe armazém e suas subclasses com seus respectivos métodos e atributos 
+
+![](img//tabela2.jpg) <br>
+Representa a classe Sistema de Estoque que gerencia todas as classes contidas no sistema com seus respectivos métodos e atributos. 
+
+
 Tabela 1: Representa as classes com seus respectivos métodos e atributos

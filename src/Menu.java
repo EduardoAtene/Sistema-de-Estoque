@@ -6,15 +6,6 @@ public class Menu {
 	static SistemaEstoque menu = new SistemaEstoque();
 	
 	public static void main(String[] args) {
-		menu.criarArmazemContratado("Argentinx", 21);
-
-		
-
-		menu.adicionarOnibus("Argentinx", "Escolar", 2020, "DEC-1312", 150000.00);
-		menu.adicionarOnibus("Argentinx", "Fundi", 2020, "VSF-1547", 200000.00);
-		menu.adicionarCarro("Argentinx", "Celta", 2030, "ABC-1234", 5000.00);
-		menu.adicionarOnibus("Argentinx", "RAUL", 2020, "DEF-1234", 150000.00);
-
 		menu_principal();
 		}
 	// MENU PRINCIPAL
@@ -165,7 +156,7 @@ public class Menu {
 				System.out.println("Qual é o tamanho do seu armazem?");
 				tamanho = sc.nextDouble();
 				if(tamanho == 0)menu_principal();
-				else if(tamanho>0);
+				else if(tamanho<0);
 				else verific=1;
 			}catch (InputMismatchException e) {
 				System.out.println("Entrada inválida. Por favor, insira uma entrada do tipo flutuante.\n"
@@ -193,7 +184,7 @@ public class Menu {
 				System.out.println("Qual é o tamanho do seu armazem?");
 				tamanho = sc.nextDouble();
 				if(tamanho == 0)menu_principal();
-				else if(tamanho>0);
+				else if(tamanho<0);
 				else verific=1;
 			}catch (InputMismatchException e) {
 				System.out.println("Entrada inválida. Por favor, insira uma entrada do tipo flutuante.\n"
@@ -825,9 +816,6 @@ public class Menu {
 			menu_principal();
 		}
 	}
-	
-	
-
 	
 	
 }
